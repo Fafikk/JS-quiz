@@ -1,0 +1,33 @@
+.inputs{
+    margin: 1px;
+    padding: 5px;
+    background-color: #ccccd1;
+    border-radius: 7px;
+}
+
+.inputs:hover{
+    background-color: #a1a1aa;
+}
+
+button{
+    background-color: #2ac02a;
+    color: white;
+    font-weight: bold;
+    border: 1px #2ac02a solid;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 17px;
+    height: 30px;
+}
+
+button:hover{
+    background-color: #25a725;
+}
+
+#question{
+    font-size: 25px;
+}
+
+.numer{
+    font-size: 28px;
+}
