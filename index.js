@@ -141,9 +141,13 @@ const correct = [
 let current = 0;
 let score = 0;
 
+// starting when website opens
+
+window.addEventListener("load", start(1));
+
 // first question
 
-function start() {
+function start(id) { // id from event listener
     document.getElementById('board').innerHTML = `
     <p class="numer">Pytanie <span id="numer">-</span> z 20:</p>
     <p id="question">Pytanie</p>
@@ -158,13 +162,13 @@ function start() {
 
     score = 0;
     document.getElementById('error').innerHTML = "";
-    current = 1;
-    let question1 = questions[0];
-    let answer1 = answersA[0];
-    let answer2 = answersB[0];
-    let answer3 = answersC[0];
-    let answer4 = answersD[0];
-    document.getElementById('numer').innerText = 1;
+    current = id;
+    let question1 = questions[id-1];
+    let answer1 = answersA[id-1];
+    let answer2 = answersB[id-1];
+    let answer3 = answersC[id-1];
+    let answer4 = answersD[id-1];
+    document.getElementById('numer').innerText = id;
     document.getElementById('question').innerHTML = question1;
     document.getElementById('answer1').innerText = answer1;
     document.getElementById('answer2').innerText = answer2;
@@ -176,31 +180,11 @@ function start() {
 
 function next() {
 
-    switch (current){
-        case 1: question1Check(); break;
-        case 2: question2Check(); break;
-        case 3: question3Check(); break;
-        case 4: question4Check(); break;
-        case 5: question5Check(); break;
-        case 6: question6Check(); break;
-        case 7: question7Check(); break;
-        case 8: question8Check(); break;
-        case 9: question9Check(); break;
-        case 10: question10Check(); break;
-        case 11: question11Check(); break;
-        case 12: question12Check(); break;
-        case 13: question13Check(); break;
-        case 14: question14Check(); break;
-        case 15: question15Check(); break;
-        case 16: question16Check(); break;
-        case 17: question17Check(); break;
-        case 18: question18Check(); break;
-        case 19: question19Check(); break;
-        case 20: question20Check(); break;
-        default: document.getElementById('error').innerHTML = "Najpierw musisz rozpocząć quiz.";
-    }
+    questionCheck(current); // current from start() function
 
 }
+
+// without changes
 
 function exit() {
     document.getElementById('board').innerHTML = `
@@ -211,505 +195,32 @@ function exit() {
 
 // checking answers
 
-function question1Check() {
+function questionCheck(id) { // id from function next()
     let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[0];
+    let correctCheck = correct[id-1];
 
     if (correctCheck == clientAnswer){
         score+=1;
     }
 
-    question2();
-}
+    id+=1; // next id
 
-function question2Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[1];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question3();
-}
-
-function question3Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[2];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question4();
-}
-
-function question4Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[3];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question5();
-}
-
-function question5Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[4];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question6();
-}
-
-function question6Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[5];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question7();
-}
-
-function question7Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[6];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question8();
-}
-
-function question8Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[7];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question9();
-}
-
-function question9Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[8];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question10();
-}
-
-function question10Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[9];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question11();
-}
-
-function question11Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[10];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question12();
-}
-
-function question12Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[11];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question13();
-}
-
-function question13Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[12];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question14();
-}
-
-function question14Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[13];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question15();
-}
-
-function question15Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[14];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question16();
-}
-
-function question16Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[15];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question17();
-}
-
-function question17Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[16];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question18();
-}
-
-function question18Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[17];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question19();
-}
-
-function question19Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[18];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    question20();
-}
-
-function question20Check() {
-    let clientAnswer = document.querySelector('input[name="answer"]:checked').value;
-    let correctCheck = correct[19];
-
-    if (correctCheck == clientAnswer){
-        score+=1;
-    }
-
-    exit();
+    question(id);
 }
 
 // loading questions
 
-function question2() {
-    current = 2;
-    let question1 = questions[1];
-    let answer1 = answersA[1];
-    let answer2 = answersB[1];
-    let answer3 = answersC[1];
-    let answer4 = answersD[1];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question3() {
-    current = 3;
-    let question1 = questions[2];
-    let answer1 = answersA[2];
-    let answer2 = answersB[2];
-    let answer3 = answersC[2];
-    let answer4 = answersD[2];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question4() {
-    current = 4;
-    let question1 = questions[3];
-    let answer1 = answersA[3];
-    let answer2 = answersB[3];
-    let answer3 = answersC[3];
-    let answer4 = answersD[3];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question5() {
-    current = 5;
-    let question1 = questions[4];
-    let answer1 = answersA[4];
-    let answer2 = answersB[4];
-    let answer3 = answersC[4];
-    let answer4 = answersD[4];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question6() {
-    current = 6;
-    let question1 = questions[5];
-    let answer1 = answersA[5];
-    let answer2 = answersB[5];
-    let answer3 = answersC[5];
-    let answer4 = answersD[5];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question7() {
-    current = 7;
-    let question1 = questions[6];
-    let answer1 = answersA[6];
-    let answer2 = answersB[6];
-    let answer3 = answersC[6];
-    let answer4 = answersD[6];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question8() {
-    current = 8;
-    let question1 = questions[7];
-    let answer1 = answersA[7];
-    let answer2 = answersB[7];
-    let answer3 = answersC[7];
-    let answer4 = answersD[7];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question9() {
-    current = 9;
-    let question1 = questions[8];
-    let answer1 = answersA[8];
-    let answer2 = answersB[8];
-    let answer3 = answersC[8];
-    let answer4 = answersD[8];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question10() {
-    current = 10;
-    let question1 = questions[9];
-    let answer1 = answersA[9];
-    let answer2 = answersB[9];
-    let answer3 = answersC[9];
-    let answer4 = answersD[9];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question11() {
-    current = 11;
-    let question1 = questions[10];
-    let answer1 = answersA[10];
-    let answer2 = answersB[10];
-    let answer3 = answersC[10];
-    let answer4 = answersD[10];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question12() {
-    current = 12;
-    let question1 = questions[11];
-    let answer1 = answersA[11];
-    let answer2 = answersB[11];
-    let answer3 = answersC[11];
-    let answer4 = answersD[11];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question13() {
-    current = 13;
-    let question1 = questions[12];
-    let answer1 = answersA[12];
-    let answer2 = answersB[12];
-    let answer3 = answersC[12];
-    let answer4 = answersD[12];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question14() {
-    current = 14;
-    let question1 = questions[13];
-    let answer1 = answersA[13];
-    let answer2 = answersB[13];
-    let answer3 = answersC[13];
-    let answer4 = answersD[13];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question15() {
-    current = 15;
-    let question1 = questions[14];
-    let answer1 = answersA[14];
-    let answer2 = answersB[14];
-    let answer3 = answersC[14];
-    let answer4 = answersD[14];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question16() {
-    current = 16;
-    let question1 = questions[15];
-    let answer1 = answersA[15];
-    let answer2 = answersB[15];
-    let answer3 = answersC[15];
-    let answer4 = answersD[15];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question17() {
-    current = 17;
-    let question1 = questions[16];
-    let answer1 = answersA[16];
-    let answer2 = answersB[16];
-    let answer3 = answersC[16];
-    let answer4 = answersD[16];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question18() {
-    current = 18;
-    let question1 = questions[17];
-    let answer1 = answersA[17];
-    let answer2 = answersB[17];
-    let answer3 = answersC[17];
-    let answer4 = answersD[17];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question19() {
-    current = 19;
-    let question1 = questions[18];
-    let answer1 = answersA[18];
-    let answer2 = answersB[18];
-    let answer3 = answersC[18];
-    let answer4 = answersD[18];
-    document.getElementById('numer').innerText = current;
-    document.getElementById('question').innerHTML = question1;
-    document.getElementById('answer1').innerText = answer1;
-    document.getElementById('answer2').innerText = answer2;
-    document.getElementById('answer3').innerText = answer3;
-    document.getElementById('answer4').innerText = answer4;
-}
-
-function question20() {
-    current = 20;
-    let question1 = questions[19];
-    let answer1 = answersA[19];
-    let answer2 = answersB[19];
-    let answer3 = answersC[19];
-    let answer4 = answersD[19];
+function question(id) { // id from function questionCheck()
+    if (id == 21) {
+        exit();
+        return;
+    }
+    current = id;
+    let question1 = questions[id-1];
+    let answer1 = answersA[id-1];
+    let answer2 = answersB[id-1];
+    let answer3 = answersC[id-1];
+    let answer4 = answersD[id-1];
     document.getElementById('numer').innerText = current;
     document.getElementById('question').innerHTML = question1;
     document.getElementById('answer1').innerText = answer1;
